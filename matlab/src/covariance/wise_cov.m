@@ -1,4 +1,4 @@
-function [ est ] = wise_cov( S_hat, rho, eig_tol, bisection_tol )
+function [ est ] = wise_cov( varargin )
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DRO Covariance Matrix Estimation
 % Viet Anh NGUYEN, Peyman MOHAJERIN, Daniel KUHN
@@ -12,14 +12,33 @@ function [ est ] = wise_cov( S_hat, rho, eig_tol, bisection_tol )
 % eig_tol: tolerance for the positive eigenvalues (optional, default: 1e-14)
 % bisection_tol: tolerance for bisection search(optional, default: 1e-5)
 %
-% Output: and estimator object
-% est.value: the covariance matrix estimator
+% Output: an estimator object
+% est.value: the covariance matrix estimate
 % est.x: the eigenvalues of the estimator
 % est.eigbasis: the eigenbasis of the estimator
 % est.gamma: the optimal dual variable
 % est.min_gamma, est.max_gamma: the range of gamma used for bisection
 % est.msg: output message
-    
+
+    eig_tol = 1e-14;            % default value
+    bisection_tol = 1e-5;       % default value
+
+    if nargin == 2
+        S_hat = varargin{1};
+        rho = varargin{2};
+    elseif nargin == 3
+        S_hat = varargin{1};
+        rho = varargin{2};
+        eig_tol = varargin{3};
+    elseif nargin == 4
+        S_hat = varargin{1};
+        rho = varargin{2};
+        eig_tol = varargin{3};
+        bisection_tol = varargin{4};
+    else
+        disp('Error! Input arguments mismatch');
+        return
+    end
 
     % Eigenvalue decomposition of the sample covariance matrix
     [W, D] = mexeig_dgesdd(S_hat);
@@ -48,7 +67,7 @@ function [ est ] = wise_cov( S_hat, rho, eig_tol, bisection_tol )
         end
        
         % Calculate lambda from bisection
-        gamma = wise_bisect(@wise_cov_func_gamma, lambda_bar, rho, [min_gamma, max_gamma], bisection_tol);
+        gamma = wise_bisect(@(gamma)wise_cov_func_gamma(gamma, lambda_bar, rho), [min_gamma, max_gamma], bisection_tol);
 
         % Calculate the eigenvalues
         y = zeros(p, 1);     % eigenvalues of the precision matrix estimator

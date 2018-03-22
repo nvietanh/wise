@@ -1,6 +1,10 @@
-clear all; close all; clc;
-addpath(genpath('C:\Users\vnguyen\Dropbox\Research\EPFL\RAO\Research\Covariance Estimation\local\Matlab\171109'), path);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DRO Precision Matrix Estimation
+% Viet Anh NGUYEN, Peyman MOHAJERIN, Daniel KUHN
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Run install.m before running this script
+clear all; close all; clc;
 
 %%
 rng(0);
@@ -16,7 +20,7 @@ eig_tol = 1e-6;
 bisection_tol = 1e-6;
 for i = 1:length(rho_vect)
     rho = rho_vect(i);
-    est = dro_precision( S, rho, eig_tol, bisection_tol);
+    est = wise( S, rho, eig_tol, bisection_tol);
     eig_value(:, i) = est.eig;
     gamma_value(i) = est.gamma;
     min_gamma_value(i) = est.min_gamma;

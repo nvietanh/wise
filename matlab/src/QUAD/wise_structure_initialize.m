@@ -14,9 +14,10 @@ function [ sol, msg ] = wise_structure_initialize( varargin )
     end
     
     % First, initialize input.E2
-    input.E2 = input.E;
+    % input.E2 keeps track of elements which can be non-zeros
+    input.E2 = 1-input.E;
     % E2 to take care of the symmetric elements (only take the upper part)
-    input.E2(find(tril(input.E2,-1) > 0.1)) = 0; %reset lower part to 0
+    input.E2(find(tril(input.E2,-1) > 0.1)) = 0; %reset lower part to 1
 
 
     % initialize solution
@@ -26,7 +27,8 @@ function [ sol, msg ] = wise_structure_initialize( varargin )
     sol.offdiag_element = +(sol.lat~=sol.lon);
     % p is the size of the covariance matrix
     sol.p = size(input.E2, 1); 
-    % d is the number of nonzeros (diagonal + upper triangle)
+    % d is the number of nonzeros (diagonal + upper triangle) 
+    % [effective size of the problem]
     sol.d = length(sol.idx); 
 
     sol.linear_weight = sol.diag_element + 2*sol.offdiag_element;

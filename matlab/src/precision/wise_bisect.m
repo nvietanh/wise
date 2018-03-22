@@ -1,4 +1,4 @@
-function [ mid ] = dro_bisect( func_name, lambda, rho, range, tol )
+function [ mid ] = wise_bisect( func_name, range, tol )
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DRO Precision Matrix Estimation
 % Viet Anh NGUYEN, Peyman MOHAJERIN, Daniel KUHN
@@ -8,8 +8,6 @@ function [ mid ] = dro_bisect( func_name, lambda, rho, range, tol )
 %
 % Input:
 % func_name: the name of function to bisect
-% lambda: the vector containing the eigenvalues of the sample covariance
-% rho: size of the Wasserstein ambiguity set
 % range: a vector containing the initial lower and upper bound for bisection
 % tol: tolerance 
 
@@ -19,7 +17,7 @@ function [ mid ] = dro_bisect( func_name, lambda, rho, range, tol )
     mid = (lower+upper)/2;
     while done < 1
         
-        if func_name(mid, lambda, rho) > 0
+        if func_name(mid) > 0
             upper = mid;
         else
             lower = mid;

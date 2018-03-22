@@ -1,4 +1,4 @@
-function [ value ] = dro_function_prec_gamma( gamma, lambda, rho )
+function [ value ] = wise_func_gamma( gamma, lambda, rho )
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DRO Precision Matrix Estimation
 % Viet Anh NGUYEN, Peyman MOHAJERIN, Daniel KUHN

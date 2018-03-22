@@ -2,7 +2,9 @@
 % DRO Precision Matrix Estimation
 % Viet Anh NGUYEN, Peyman MOHAJERIN, Daniel KUHN
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%
+% The solar irradiation application
+%
 clear all; close all; clc;
 startup;
 

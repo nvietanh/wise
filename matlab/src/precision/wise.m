@@ -6,17 +6,30 @@ function [ est ] = wise( varargin)
 %
 % Calculate the Wasserstein Inverse-covariance Shrinkage Estimator
 %
+% Input:
+% S_hat: the sample covariance matrix
+% rho: the radius of the Wasserstein ambiguity set 
+% eig_tol: tolerance for the positive eigenvalues (optional, default: 1e-14)
+% bisection_tol: tolerance for bisection search(optional, default: 1e-5)
+%
+% Output: an estimator object
+% est.value: the precision matrix estimate
+% est.x: the eigenvalues of the estimator
+% est.eigbasis: the eigenbasis of the estimator
+% est.gamma: the optimal dual variable
+% est.min_gamma, est.max_gamma: the range of gamma used for bisection
+% est.msg: output message
+    
+    eig_tol = 1e-14;            % default value
+    bisection_tol = 1e-5;       % default value
     
     if nargin == 2
         S_hat = varargin{1};
         rho = varargin{2};
-        eig_tol = 1e-14;            % default value
-        bisection_tol = 1e-5;       % default value
     elseif nargin == 3
         S_hat = varargin{1};
         rho = varargin{2};
         eig_tol = varargin{3};
-        bisection_tol = 1e-5;       % default value
     elseif nargin == 4
         S_hat = varargin{1};
         rho = varargin{2};
@@ -64,7 +77,7 @@ function [ est ] = wise( varargin)
         end
         
         % Calculate optimal gamma from bisection
-        gamma = wise_bisect(@wise_func_gamma, lambda_bar, rho, [min_gamma, max_gamma], bisection_tol);
+        gamma = wise_bisect(@(gamma)wise_func_gamma(gamma, lambda_bar, rho), [min_gamma, max_gamma], bisection_tol);
 
         % Calculate the eigenvalues
         x = zeros(p, 1);     % eigenvalues of the precision matrix estimator

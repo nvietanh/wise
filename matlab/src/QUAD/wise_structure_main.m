@@ -3,9 +3,11 @@ function [ est ] = wise_structure_main( varargin )
 % DRO Precision Matrix Estimation
 % Viet Anh NGUYEN, Peyman MOHAJERIN, Daniel KUHN
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 %
-%   input.E contains the location of nonzeros in the precision matrix
+%   The main function performing the sequential quadratic programming
+%   problem for inverse covariance estimation.
+%
+%   input.E contains the location of zeros in the precision matrix
 %
     if nargin == 2
         input = varargin{1};
