@@ -15,7 +15,7 @@ function [ sol, msg ] = wise_structure_initialize( varargin )
     
     % First, initialize input.E2
     % input.E2 keeps track of elements which can be non-zeros
-    input.E2 = 1-input.E;
+    input.E2 = 1 - input.E;
     % E2 to take care of the symmetric elements (only take the upper part)
     input.E2(find(tril(input.E2,-1) > 0.1)) = 0; %reset lower part to 1
 
@@ -36,8 +36,11 @@ function [ sol, msg ] = wise_structure_initialize( varargin )
     if ~isstruct(initial_sol) || ~wise_structure_check_solution_consistency(input, initial_sol)
         % If there is no initial_sol, then initial X and gamma
         % Set X_0, gamma_0
-        sol.X = diag(diag(inv(input.S)));
-        sol.gamma = sqrt(trace(sol.X*input.S*sol.X))/input.rho;      
+        %sol.X = inv(diag(diag(input.S)));
+        %sol.gamma = sqrt(trace(sol.X*input.S*sol.X))/input.rho;      
+        sol.X = eye(sol.p);
+        %sol.gamma = 1 + 1;
+        sol.gamma = sqrt(trace(sol.X*input.S*sol.X))/input.rho;
     else
         % If initial_sol is provided, and that solution is consistent, initialize with the provided sol
         sol.X = initial_sol.X;

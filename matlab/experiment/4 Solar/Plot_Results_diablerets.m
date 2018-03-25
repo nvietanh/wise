@@ -15,7 +15,7 @@
 
 
 % clear all; close all; clc;
-% load('diablerets_result.mat');
+% load('result/diablerets_result.mat');
 
 
 %% Calculate the average values

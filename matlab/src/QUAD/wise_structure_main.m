@@ -50,7 +50,7 @@ function [ est ] = wise_structure_main( varargin )
             
         info.obj(iter) = sol.f;
         info.stepsize(iter) = alpha;
-        info.norm_grad(iter) = norm(direction.Delta_X, 2)/sol.d;
+        info.norm_grad(iter) = norm(direction.Delta_X, 2)/sol.d + norm(direction.Delta_gamma);
         info.toc(iter) = toc;
         % Display iteration information
         if options.verbose

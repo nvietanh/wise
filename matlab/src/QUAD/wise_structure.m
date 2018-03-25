@@ -1,4 +1,4 @@
-function [ est ] = wise_structure( S_hat, rho, E, options )
+function [ est ] = wise_structure( varargin )
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DRO Precision Matrix Estimation
 % Viet Anh NGUYEN, Peyman MOHAJERIN, Daniel KUHN
@@ -13,17 +13,27 @@ function [ est ] = wise_structure( S_hat, rho, E, options )
 % E: matrix specifying the sparsity, E(i,j) > 0 means X(i,j) = 0. The upper
 % triangular of E is used. 
 % options: an options structure
+% X_init: initial gamma for X (optional)
+% gamma_init: initial value for gamma (optional)
 % 
 % Output:
 % est.value: the precision matrix estimate
 % est.info: a termination message 
 
     if nargin == 4
-        input.S = S_hat;
-        input.rho = rho;
-        input.E = E;
-        
+        input.S = varargin{1};
+        input.rho = varargin{2};
+        input.E = varargin{3};
+        options = varargin{4};
         est = wise_structure_main(input, options);
+    elseif nargin == 6
+        input.S = varargin{1};
+        input.rho = varargin{2};
+        input.E = varargin{3};
+        options = varargin{4};
+        initial_sol.X = varargin{5};
+        initial_sol.gamma = varargin{6};
+        est = wise_structure_main(input, options, initial_sol);
     else
         est = NaN;
         disp('Input not correct!');
