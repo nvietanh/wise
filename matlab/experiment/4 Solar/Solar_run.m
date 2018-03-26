@@ -11,7 +11,6 @@ startup;
 %%
 load(['data' filesep 'diablerets_data_kfold.mat']);
 
-
 %%
 options = wise_structure_settings('iter_limit', 100, 'sigma', 1e-4, 'delta_tol', 1e-6, 'gradient_tol', 1e-4);
 %
