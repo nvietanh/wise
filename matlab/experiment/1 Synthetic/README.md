@@ -2,7 +2,7 @@
 
 This folder contains the source code for the for synthetic experiment.
 
-Notice that it may take a long time to run the synthetic data due to the fine-scale search grid. The result data can be downloaded from the author's main [website](https://www.vietanhnguyen.net). 
+Notice that it may take a long time to run the synthetic data due to the fine-scale search grid. The result data can be found in the result folder along with the script to plot Figure 2, 3 and 4 in the paper. 
 
 ## Run to get the sweet spot curve
 
