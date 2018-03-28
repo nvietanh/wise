@@ -1,7 +1,7 @@
 function [ val ] = wise_structure_sparse_kron( A, B, offdiag_element, lon, lat )
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% DRO Precision Matrix Estimation
-% Viet Anh NGUYEN, Peyman MOHAJERIN, Daniel KUHN
+% Wasserstein Inverse covariance Shrinkage Estimator
+% Viet Anh NGUYEN, Daniel KUHN, Peyman MOHAJERIN ESFAHANI
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % This function implement A kronecker B

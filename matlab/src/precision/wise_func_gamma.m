@@ -1,7 +1,7 @@
 function [ value ] = wise_func_gamma( gamma, lambda, rho )
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% DRO Precision Matrix Estimation
-% Viet Anh NGUYEN, Peyman MOHAJERIN, Daniel KUHN
+% Wasserstein Inverse covariance Shrinkage Estimator
+% Viet Anh NGUYEN, Daniel KUHN, Peyman MOHAJERIN ESFAHANI
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Function used for bisection (used to find gamma in the precision matrix problem)

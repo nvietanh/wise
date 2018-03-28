@@ -1,4 +1,4 @@
-# WISE: Wasserstein Inverse-covariance Shrinkage Estimator, MATLAB implementation
+# WISE: Wasserstein Inverse covariance Shrinkage Estimator, MATLAB implementation
 
 This folder contains the source code for the implementation, and all the experiments in the paper.
 

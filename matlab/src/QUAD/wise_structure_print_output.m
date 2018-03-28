@@ -1,7 +1,7 @@
 function [ output_args ] = wise_structure_print_output( info )
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% DRO Precision Matrix Estimation
-% Viet Anh NGUYEN, Peyman MOHAJERIN, Daniel KUHN
+% Wasserstein Inverse covariance Shrinkage Estimator
+% Viet Anh NGUYEN, Daniel KUHN, Peyman MOHAJERIN ESFAHANI
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Auxiliary function to print iteration output

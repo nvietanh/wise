@@ -1,8 +1,8 @@
 function [ consistent ] = wise_structure_check_solution_consistency( input, initial_sol )
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% DRO Precision Matrix Estimation
-% Viet Anh NGUYEN, Peyman MOHAJERIN, Daniel KUHN
+% Wasserstein Inverse covariance Shrinkage Estimator
+% Viet Anh NGUYEN, Daniel KUHN, Peyman MOHAJERIN ESFAHANI
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %   This function is used to check whether the initial solution provided by

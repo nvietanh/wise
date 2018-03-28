@@ -1,7 +1,7 @@
 function [ X, lambda, optimal_value ] = PrecisionStructure_Wasserstein_SDPT3( S_hat, rho, zero_mat, sqrt_S_hat )
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% DRO Precision Matrix Estimation
-% Viet Anh NGUYEN, Peyman MOHAJERIN, Daniel KUHN
+% Wasserstein Inverse covariance Shrinkage Estimator
+% Viet Anh NGUYEN, Daniel KUHN, Peyman MOHAJERIN ESFAHANI
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %   Solve the precision matrix estimation using Wasserstein with given sparsity structure

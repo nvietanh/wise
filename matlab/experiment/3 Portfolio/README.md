@@ -1,4 +1,4 @@
-# WISE: Wasserstein Inverse-covariance Shrinkage Estimator, Portfolio optimization experiment
+# WISE: Wasserstein Inverse covariance Shrinkage Estimator, Portfolio optimization experiment
 
 This folder contains the source code for the for minimum variance portfolio optimization experiment.
 

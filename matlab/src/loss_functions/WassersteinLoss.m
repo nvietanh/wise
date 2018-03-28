@@ -1,7 +1,7 @@
-function [ distance ] = WassersteinDistanceNormal( mu1, Sigma1, mu2, Sigma2 )
+function [ distance ] = WassersteinLoss( mu1, Sigma1, mu2, Sigma2 )
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% DRO Precision Matrix Estimation
-% Viet Anh NGUYEN, Peyman MOHAJERIN, Daniel KUHN
+% Wasserstein Inverse covariance Shrinkage Estimator
+% Viet Anh NGUYEN, Daniel KUHN, Peyman MOHAJERIN ESFAHANI
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     [V, D] = eig(Sigma1);

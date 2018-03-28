@@ -1,4 +1,4 @@
-# WISE: Wasserstein Inverse-covariance Shrinkage Estimator, Linear Discriminant Analysis (LDA) experiment
+# WISE: Wasserstein Inverse covariance Shrinkage Estimator, Linear Discriminant Analysis (LDA) experiment
 
 This folder contains the source code for the for Linear Discriminant Analysis (LDA) experiment.
 

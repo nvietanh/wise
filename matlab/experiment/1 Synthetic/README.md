@@ -1,4 +1,4 @@
-# WISE: Wasserstein Inverse-covariance Shrinkage Estimator, Synthetic experiment
+# WISE: Wasserstein Inverse covariance Shrinkage Estimator, Synthetic experiment
 
 This folder contains the source code for the for synthetic experiment.
 
