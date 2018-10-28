@@ -22,7 +22,7 @@ est = wise(S_hat, rho);
 est = wise(S_hat, rho, 1e-8, 1e-5);
 ```
 
-The function return a matlab structure:
+The function returns a matlab structure:
 
 1. est.value: the precision matrix estimate
 2. est.x: the eigenvalues of the estimator
