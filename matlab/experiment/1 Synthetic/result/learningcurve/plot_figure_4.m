@@ -39,100 +39,10 @@ LineMarkType = {'-', ':k', '--', '-o', '.', '*'};
 y_axis_common = 10.^[0.3 2];
 SampleSize_idx_toplot = [1, 2, 3, 4];
 
-%% Plot learning curve for Wasserstein
-% Here, the optimal rho is the rho that minimizes the average loss
-files = {'LearningCurve400.mat', 'LearningCurve200.mat', 'LearningCurve100.mat', 'LearningCurve50.mat'};
 
 
-figure;
-hold on;
-for count = 1:length(files)
-    load(files{count}, 'AllError', 'param');
-    optimal_rho = [];
-    temp = real(AllError.Wasserstein_Robust_Error);
-    param_plot.x_vect = param.DataSampleSize_vect;
-    for i = 1:length(param_plot.x_vect)
-        [val, idx] = min(mean(squeeze(temp(i, :, :)), 2));
-        optimal_rho(i) = param.rho_vect(idx);
-    end
-    plot(param_plot.x_vect, optimal_rho, LineMarkType{count},'Color',ColorTube(count,:),'MarkerSize',MarkerSize,'LineWidth',LineWidth);
-    haha{count} = temp;
-    hehe{count} = optimal_rho;
-end
-combined_legends = {'$d=400$', '$d=200$', '$d=100$', '$d=50$'};
-xlabel('$n$','Interpreter','latex','FontSize',FontSize2);
-ylabel('$\rho^*$','Interpreter','latex','FontSize',FontSize2);
-xlim([10, 10^6]);
-ylim([0, 1]);
-xticks(10.^[1:1:6])
-xticklabels({'10^1','10^2','10^3','10^4','10^5','10^6'})
-set(gca,'FontSize', FontSize2);
-%title(['Wasserstein Robust Estimator - ' num2str(max(TestCases)) ' test cases'],'Interpreter','latex','FontSize',FontSize2);
-Leg = legend(combined_legends);
-set(Leg,'Interpreter','latex','FontSize', FontSize2, 'Location', 'NorthEast')
 
-set(gca,'xscale','log')
-set(gca,'yscale','log')
-% The below code expand the axis to minimize the white gap
-ax = gca;
-outerpos = ax.OuterPosition;
-ti = ax.TightInset; 
-left = outerpos(1) + ti(1);
-bottom = outerpos(2) + ti(2);
-ax_width = outerpos(3) - ti(1) - ti(3);
-ax_height = outerpos(4) - ti(2) - ti(4);
-ax.Position = [left bottom ax_width ax_height];
-
-
-%% Plot learning curve for Wasserstein in peyman's rho
-% Here, the optimal rho is the average of optimal rho
-files = {'LearningCurve50.mat', 'LearningCurve100.mat', 'LearningCurve200.mat', 'LearningCurve400.mat'};
-
-
-figure;
-hold on;
-for count = 1:length(files)
-    load(files{count}, 'AllError', 'param');
-    optimal_rho = [];
-    temp = real(AllError.Wasserstein_Robust_Error);
-    param_plot.x_vect = param.DataSampleSize_vect;
-    for i = 1:length(param_plot.x_vect)
-        [val, idx] = min(squeeze(temp(i, :, :)));
-        optimal_rho(i) = mean(param.rho_vect(idx));
-    end
-    plot(param_plot.x_vect, optimal_rho, LineMarkType{count},'Color',ColorTube(count,:),'MarkerSize',MarkerSize,'LineWidth',LineWidth);
-    haha{count} = temp;
-    hehe{count} = optimal_rho;
-    % run regression to find the slope of the curve
-    regress(log(optimal_rho)', log(param_plot.x_vect)')
-end
-combined_legends = {'$d=50$', '$d=100$', '$d=200$', '$d=400$'};
-xlabel('$n$','Interpreter','latex','FontSize',FontSize2);
-ylabel('$\rho^*$','Interpreter','latex','FontSize',FontSize2);
-xlim([10, 10^6]);
-ylim([0, 2]);
-
-xticks(10.^[1:1:6])
-xticklabels({'10^1','10^2','10^3','10^4','10^5','10^6'})
-
-set(gca,'FontSize', FontSize2);
-%title(['Wasserstein Robust Estimator - ' num2str(max(TestCases)) ' test cases'],'Interpreter','latex','FontSize',FontSize2);
-Leg = legend(combined_legends);
-set(Leg,'Interpreter','latex','FontSize', FontSize2+5, 'Location', 'NorthEast')
-
-set(gca,'xscale','log')
-set(gca,'yscale','log')
-% The below code expand the axis to minimize the white gap
-ax = gca;
-outerpos = ax.OuterPosition;
-ti = ax.TightInset; 
-left = outerpos(1) + ti(1);
-bottom = outerpos(2) + ti(2);
-ax_width = outerpos(3) - ti(1) - ti(3);
-ax_height = outerpos(4) - ti(2) - ti(4);
-ax.Position = [left bottom ax_width ax_height];
-
-%% Plot learning curve for Wasserstein in peyman's rho
+%% Plot learning curve for Wasserstein in another definition of rho
 % Here, the optimal rho is the average of optimal rho
 files = {'LearningCurve50.mat', 'LearningCurve200.mat', 'LearningCurve400.mat'};
 
